@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="loading" width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:tween="egret.tween.*">
+	<w:Declarations>
+	</w:Declarations>
+	<w:Config id="15c076616e4"/>
+	<e:ProgressBar id="processBar" width="400" height="40" x="138" y="655" value="0" enabled="true"/>
+	<e:Label id="tipsLabel" text="资源加载中..." x="236" y="582" italic="true" anchorOffsetY="0" height="38" anchorOffsetX="0" width="196"/>
+</e:Skin>

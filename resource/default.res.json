@@ -1,0 +1,15 @@
+{
+	"groups": [
+		{
+			"keys": "LevelConfigData_json",
+			"name": "preload"
+		}
+	],
+	"resources": [
+		{
+			"url": "configs/LevelConfigData.json",
+			"type": "json",
+			"name": "LevelConfigData_json"
+		}
+	]
+}
