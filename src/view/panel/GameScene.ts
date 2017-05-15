@@ -37,21 +37,23 @@ module game {
             // var tw = egret.Tween.get(shp,{loop: true});
             // tw.to({rotation:360},1000)
 
-            var needle = new game.NeedleUI();
-            needle.x = this.$stage.$stageWidth/2;
-            needle.y = this.$stage.$stageHeight/2;
-            this.addChild(needle);
-            this.needle = needle;
+            // var needle = new game.NeedleUI();
+            // needle.x = this.$stage.$stageWidth/2;
+            // needle.y = this.$stage.$stageHeight/2;
+            // this.addChild(needle);
+            // this.needle = needle;
 
             let wheel = new game.WheelUI()
             this.addChild(wheel);
             wheel.x = this.$stage.$stageWidth / 2;
             wheel.y = this.$stage.$stageHeight / 2 - 200;
-            wheel.play(1000,false); 
+            wheel.play(4000,false); 
             this.wheel = wheel;
 
-
-
+            let group = new game.NeedleGroupUI();
+            group.x = this.$stage.$stageWidth/2;
+            group.y = this.$stage.$stageHeight;
+            this.addChild(group);
 
         }
 

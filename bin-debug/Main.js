@@ -18,8 +18,8 @@ var Main = (function (_super) {
         // this.createGameScene();
         RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
         RES.loadConfig("resource/default.res.json", "resource/");
-        var loadingUI = new game.LoadingUI();
-        this.addChild(loadingUI);
+        // let loadingUI  = new game.LoadingUI();
+        // this.addChild(loadingUI);
         new eui.Theme("resource/default.thm.json", this.stage);
     };
     Main.prototype.createGameScene = function () {

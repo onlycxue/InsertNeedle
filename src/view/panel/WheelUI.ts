@@ -9,43 +9,27 @@ module game{
         }
         //创建圆盘
         public init(){
-            this.$graphics.lineStyle(10,0x00ff00);
-            this.$graphics.beginFill(0xff00000,1);
+            // this.$graphics.lineStyle(10,0x00ff00);
+            this.$graphics.beginFill(0x000000,1);
             this.$graphics.drawCircle(0,0,this.$radius);
-            // this.$graphics.drawRect(0,0,this.$radius,this.$radius);
             this.$graphics.endFill();
-            // this.$setAnchorOffsetX(this.$radius/2);
-            // this.$setAnchorOffsetY(this.$radius/2);
+
         }
         private $radius:number = 100;
         private $maxRadius:number = 200;
         private twAction:egret.Tween;
-        // public set radius(val:number){
-        //     this.$radius = val;
-        // }
-        // public get radius(){
-        //     return this.$radius;
-        // }
-
-        // public set maxRadius(maxR:number){
-        //     this.$maxRadius = maxR;
-        // }
-        // public get maxRadius(){
-        //     return this.$maxRadius;
-        // }
 
         public addElementByAngles(angles:number){
             let element = new game.NeedleUI();
             element.x = this.$maxRadius * Math.cos(angles);
             element.y = this.$maxRadius * Math.sin(angles);
             this.addChild(element);
+            this.drawLine(0,0,element.x,element.y);
         }
         //插入
         public insertElement(view:game.NeedleUI){
 
-            // var globalPoint = view.localToGlobal(view.x,view.y)
             var point = this.globalToLocal(view.x,view.y);
-            // var point = this.globalToLocal(globalPoint.x,globalPoint.y);
             let parent = view.$parent;
             if (parent){
                 parent.removeChild(view);
@@ -53,8 +37,17 @@ module game{
             this.addChild(view);
             view.x = point.x;
             view.y = point.y;
+            this.drawLine(0,0,point.x,point.y);
         }
 
+        public drawLine(x,y,toX,toY){
+            let line:egret.Shape = new egret.Shape();
+            line.graphics.lineStyle(4,0x000000) ;
+            line.graphics.moveTo(x,y);
+            line.graphics.lineTo(toX,toY);          
+            line.graphics.endFill();
+            this.addChild(line);
+        }
         //开始旋转
         public play(time,isReverse){
          this.twAction = egret.Tween.get(this,{loop:true});

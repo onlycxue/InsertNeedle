@@ -11,8 +11,19 @@ var game;
     var NeedleGroupUI = (function (_super) {
         __extends(NeedleGroupUI, _super);
         function NeedleGroupUI() {
-            return _super.call(this) || this;
+            var _this = _super.call(this) || this;
+            _this.initByNum(6);
+            return _this;
+            // this.verticalCenter = 0;
         }
+        NeedleGroupUI.prototype.initByNum = function (num) {
+            this.setContentSize(30, num * (30 + 10));
+            for (var i = num; i >= 1; i--) {
+                var needle = new game.NeedleUI(i.toString());
+                needle.y = (num - i * (30 + 10));
+                this.addChild(needle);
+            }
+        };
         return NeedleGroupUI;
     }(eui.Group));
     game.NeedleGroupUI = NeedleGroupUI;

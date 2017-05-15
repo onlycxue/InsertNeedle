@@ -20,37 +20,21 @@ var game;
         }
         //创建圆盘
         WheelUI.prototype.init = function () {
-            this.$graphics.lineStyle(10, 0x00ff00);
-            this.$graphics.beginFill(0xff00000, 1);
+            // this.$graphics.lineStyle(10,0x00ff00);
+            this.$graphics.beginFill(0x000000, 1);
             this.$graphics.drawCircle(0, 0, this.$radius);
-            // this.$graphics.drawRect(0,0,this.$radius,this.$radius);
             this.$graphics.endFill();
-            // this.$setAnchorOffsetX(this.$radius/2);
-            // this.$setAnchorOffsetY(this.$radius/2);
         };
-        // public set radius(val:number){
-        //     this.$radius = val;
-        // }
-        // public get radius(){
-        //     return this.$radius;
-        // }
-        // public set maxRadius(maxR:number){
-        //     this.$maxRadius = maxR;
-        // }
-        // public get maxRadius(){
-        //     return this.$maxRadius;
-        // }
         WheelUI.prototype.addElementByAngles = function (angles) {
             var element = new game.NeedleUI();
             element.x = this.$maxRadius * Math.cos(angles);
             element.y = this.$maxRadius * Math.sin(angles);
             this.addChild(element);
+            this.drawLine(0, 0, element.x, element.y);
         };
         //插入
         WheelUI.prototype.insertElement = function (view) {
-            // var globalPoint = view.localToGlobal(view.x,view.y)
             var point = this.globalToLocal(view.x, view.y);
-            // var point = this.globalToLocal(globalPoint.x,globalPoint.y);
             var parent = view.$parent;
             if (parent) {
                 parent.removeChild(view);
@@ -58,6 +42,15 @@ var game;
             this.addChild(view);
             view.x = point.x;
             view.y = point.y;
+            this.drawLine(0, 0, point.x, point.y);
+        };
+        WheelUI.prototype.drawLine = function (x, y, toX, toY) {
+            var line = new egret.Shape();
+            line.graphics.lineStyle(4, 0x000000);
+            line.graphics.moveTo(x, y);
+            line.graphics.lineTo(toX, toY);
+            line.graphics.endFill();
+            this.addChild(line);
         };
         //开始旋转
         WheelUI.prototype.play = function (time, isReverse) {

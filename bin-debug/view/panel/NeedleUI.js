@@ -10,10 +10,12 @@ var game;
 (function (game) {
     var NeedleUI = (function (_super) {
         __extends(NeedleUI, _super);
-        function NeedleUI() {
+        function NeedleUI(text) {
             var _this = _super.call(this) || this;
             _this.$radius = 20;
+            _this.text = "";
             _this.addEventListener(egret.Event.ADDED_TO_STAGE, _this.onAddToStage, _this);
+            _this.text = text;
             return _this;
         }
         Object.defineProperty(NeedleUI.prototype, "radius", {
@@ -23,26 +25,17 @@ var game;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(NeedleUI.prototype, "Num", {
-            set: function (val) {
-                this.numLabel.text = val;
-            },
-            enumerable: true,
-            configurable: true
-        });
         NeedleUI.prototype.onAddToStage = function (event) {
             var shp = new egret.Shape();
-            shp.graphics.lineStyle(2, 0x00ff00);
-            shp.graphics.beginFill(0xff0000, 1);
+            //  shp.graphics.lineStyle(2,0x00ff00);
+            shp.graphics.beginFill(0x000000, 1);
             shp.graphics.drawCircle(0, 0, this.$radius);
             shp.graphics.endFill();
-            shp.$setAnchorOffsetX(this.$radius / 2);
-            shp.$setAnchorOffsetY(this.$radius / 2);
             this.addChild(shp);
             this.numLabel = new egret.TextField();
-            this.numLabel.text = "10";
-            this.numLabel.x = -26;
-            this.numLabel.y = -25;
+            this.numLabel.text = this.text;
+            this.numLabel.x = -this.numLabel.width / 2;
+            this.numLabel.y = -this.numLabel.height / 2;
             this.addChild(this.numLabel);
         };
         return NeedleUI;
