@@ -5,8 +5,6 @@ module game {
         }
         public execute(notification: puremvc.INotification):void {
 
-            console.log(">>>>>> here is StartupCommand")
-
             var main:game.AppContainer = notification.getBody();
             ApplicationFacade.getInstance().registerMediator(new game.AppContainerMediator(main));
 

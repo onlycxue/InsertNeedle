@@ -15,6 +15,7 @@ module game {
         public initializeController(): void{
             super.initializeController();
             this.registerCommand(ApplicationFacade.STARTUP,StartupCommand);
+            // this.registerCommand()
         }
 
         public startUp(rootView:eui.UILayer) : void {

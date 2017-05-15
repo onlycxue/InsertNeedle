@@ -6,6 +6,13 @@ module game{
         constructor(){
             super();
             this.init();
+            this.addEventListener(egret.Event.ADDED_TO_STAGE,this.addToStageComplete,this);
+        }
+
+        public addToStageComplete(){
+            this.removeEventListener(egret.Event.ADDED_TO_STAGE,this.addToStageComplete,this);
+            
+
         }
         //创建圆盘
         public init(){
@@ -20,7 +27,7 @@ module game{
         private twAction:egret.Tween;
 
         public addElementByAngles(angles:number){
-            let element = new game.NeedleUI();
+            let element = new game.NeedleUI("");
             element.x = this.$maxRadius * Math.cos(angles);
             element.y = this.$maxRadius * Math.sin(angles);
             this.addChild(element);

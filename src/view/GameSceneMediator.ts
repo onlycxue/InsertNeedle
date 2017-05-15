@@ -7,9 +7,15 @@ module game{
         constructor(viewCompentend:any){
             super(GameSceneMediator.NAME,viewCompentend);
             
+            this.gameScene.addEventListener(egret.TouchEvent.TOUCH_BEGIN,this.touchEventHandle,this);
 
         }
 
+        public touchEventHandle(event:egret.TouchEvent){
+
+
+
+        }
         public listNotificationInterests():Array<any>{
             return [];
         }
@@ -17,6 +23,10 @@ module game{
         public  handleNotification(notification: puremvc.INotification):void {
 
             
+        }
+        
+        public get gameScene():game.GameScene{
+            return <game.GameScene><any>(this.viewComponent);
         }
 
     }

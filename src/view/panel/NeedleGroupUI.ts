@@ -4,7 +4,6 @@ module game{
        public constructor(){
             super();
             this.initByNum(6);
-            // this.verticalCenter = 0;
         }
 
         public initByNum(num:number){

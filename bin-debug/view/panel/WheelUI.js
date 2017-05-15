@@ -26,7 +26,7 @@ var game;
             this.$graphics.endFill();
         };
         WheelUI.prototype.addElementByAngles = function (angles) {
-            var element = new game.NeedleUI();
+            var element = new game.NeedleUI("");
             element.x = this.$maxRadius * Math.cos(angles);
             element.y = this.$maxRadius * Math.sin(angles);
             this.addChild(element);
