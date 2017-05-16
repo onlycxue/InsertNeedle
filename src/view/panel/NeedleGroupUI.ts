@@ -7,6 +7,7 @@ module game{
             ApplicationFacade.getInstance().registerMediator(new game.NeedleGroupUIMediator(this));
         }
         private static showNum:number = 5;
+        
         public initViewByLevel(level:number)
         {
             let data = RES.getRes("LevelConfigData_json")

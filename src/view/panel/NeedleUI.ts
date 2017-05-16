@@ -31,6 +31,12 @@ module game{
              this.numLabel.x = -this.numLabel.width/2;
              this.numLabel.y = -this.numLabel.height/2;
              this.addChild(this.numLabel);
-         }
+        }
+
+        public setText(text:string){
+            this.text = text;
+            this.numLabel.text = text;
+        }
+        
     }
 }

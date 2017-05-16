@@ -15,6 +15,7 @@ var game;
             var _this = _super.call(this) || this;
             _this.$radius = 100;
             _this.$maxRadius = 250;
+            _this.needles = [];
             _this.init();
             _this.addEventListener(egret.Event.ADDED_TO_STAGE, _this.addToStageComplete, _this);
             return _this;
@@ -43,6 +44,7 @@ var game;
             element.y = this.$maxRadius * Math.sin(2 * Math.PI / 360 * angles);
             this.addChild(element);
             this.drawLine(0, 0, element.x, element.y);
+            this.needles.push(element);
         };
         //插入
         WheelUI.prototype.insertElement = function (view) {
@@ -51,10 +53,12 @@ var game;
             if (parent) {
                 parent.removeChild(view);
             }
+            view.setText("");
             this.addChild(view);
             view.x = point.x;
             view.y = point.y;
             this.drawLine(0, 0, point.x, point.y);
+            this.needles.push(view);
         };
         WheelUI.prototype.drawLine = function (x, y, toX, toY) {
             var line = new egret.Shape();
@@ -76,11 +80,19 @@ var game;
         };
         //停止旋转
         WheelUI.prototype.stop = function () {
+            this.twAction.setPaused(true);
             this.twAction.pause();
         };
         WheelUI.prototype.insertPos = function () {
             return this.y + this.$maxRadius;
         };
+        Object.defineProperty(WheelUI.prototype, "needleList", {
+            get: function () {
+                return this.needles;
+            },
+            enumerable: true,
+            configurable: true
+        });
         return WheelUI;
     }(egret.Sprite));
     game.WheelUI = WheelUI;

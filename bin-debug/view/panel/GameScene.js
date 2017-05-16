@@ -40,7 +40,7 @@ var game;
             this.addChild(needle);
             needle.x = globalPos.x;
             needle.y = globalPos.y;
-            egret.Tween.get(needle, { loop: false }).to({ y: this.wheel.insertPos() }, 200).call(callback(needle));
+            egret.Tween.get(needle, { loop: false }).to({ y: this.wheel.insertPos() }, 200).call(function () { callback(needle); });
         };
         return GameScene;
     }(eui.UILayer));

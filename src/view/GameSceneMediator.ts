@@ -13,16 +13,31 @@ module game{
         //触摸事件响应
         public touchEventHandle(event:egret.TouchEvent){
 
-            console.log(">>>>>>>> 触摸事件响应 >>>>>>>>")
-            this.gameScene.shotNeedle(this.checkCollision);
+            this.gameScene.shotNeedle(this.checkCollision.bind(this));
 
         }
         //检测合法性
         public checkCollision(data:any){
-            // let needle = <game.NeedleUI><any>data;
-            console.log(">>>>>> 碰撞检测开始执行 >>>>>>>")
+            console.log(">>>>>>> checkCollision <<<<<<<<");
+            let needle = <game.NeedleUI><any>data;
 
-            // this.gameScene.wheel.insertElement(needle);
+            
+            let nPoint = this.gameScene.localToGlobal(needle.x,needle.y);
+            // let nPoint = egret.Point.create(needle.x,needle.y);
+            //判断是否发生碰撞
+            for (let item of this.gameScene.wheel.needleList){
+
+
+                let iPoint = this.gameScene.wheel.localToGlobal(item.x,item.y);
+
+                if (egret.Point.distance(nPoint,iPoint) <= 60 ){
+                    console.log(">>>>> 发生碰撞 <<<<<<<<")
+                    this.gameScene.wheel.stop();
+                    return;
+                }
+            }
+            this.gameScene.wheel.insertElement(needle);
+            this.gameScene.needleGroup.move();
         }
         public listNotificationInterests():Array<any>{
             return [

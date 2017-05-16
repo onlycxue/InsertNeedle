@@ -38,6 +38,10 @@ var game;
             this.numLabel.y = -this.numLabel.height / 2;
             this.addChild(this.numLabel);
         };
+        NeedleUI.prototype.setText = function (text) {
+            this.text = text;
+            this.numLabel.text = text;
+        };
         return NeedleUI;
     }(egret.DisplayObjectContainer));
     game.NeedleUI = NeedleUI;

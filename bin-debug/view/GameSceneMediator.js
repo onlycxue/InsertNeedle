@@ -17,14 +17,26 @@ var game;
         }
         //触摸事件响应
         GameSceneMediator.prototype.touchEventHandle = function (event) {
-            console.log(">>>>>>>> 触摸事件响应 >>>>>>>>");
-            this.gameScene.shotNeedle(this.checkCollision);
+            this.gameScene.shotNeedle(this.checkCollision.bind(this));
         };
         //检测合法性
         GameSceneMediator.prototype.checkCollision = function (data) {
-            // let needle = <game.NeedleUI><any>data;
-            console.log(">>>>>> 碰撞检测开始执行 >>>>>>>");
-            // this.gameScene.wheel.insertElement(needle);
+            console.log(">>>>>>> checkCollision <<<<<<<<");
+            var needle = data;
+            var nPoint = this.gameScene.localToGlobal(needle.x, needle.y);
+            // let nPoint = egret.Point.create(needle.x,needle.y);
+            //判断是否发生碰撞
+            for (var _i = 0, _a = this.gameScene.wheel.needleList; _i < _a.length; _i++) {
+                var item = _a[_i];
+                var iPoint = this.gameScene.wheel.localToGlobal(item.x, item.y);
+                if (egret.Point.distance(nPoint, iPoint) <= 60) {
+                    console.log(">>>>> 发生碰撞 <<<<<<<<");
+                    this.gameScene.wheel.stop();
+                    return;
+                }
+            }
+            this.gameScene.wheel.insertElement(needle);
+            this.gameScene.needleGroup.move();
         };
         GameSceneMediator.prototype.listNotificationInterests = function () {
             return [

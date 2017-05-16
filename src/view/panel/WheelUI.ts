@@ -24,6 +24,7 @@ module game{
         private $radius:number = 100;
         private $maxRadius:number = 250;
         private twAction:egret.Tween;
+        private needles:Array<game.NeedleUI> = [];
 
         public initViewByLevel(level:number){
             
@@ -38,6 +39,7 @@ module game{
             element.y = this.$maxRadius * Math.sin( 2* Math.PI/360 * angles);
             this.addChild(element);
             this.drawLine(0,0,element.x,element.y);
+            this.needles.push(element);
         }
         //插入
         public insertElement(view:game.NeedleUI){
@@ -47,10 +49,12 @@ module game{
             if (parent){
                 parent.removeChild(view);
             }
+            view.setText("");
             this.addChild(view);
             view.x = point.x;
             view.y = point.y;
             this.drawLine(0,0,point.x,point.y);
+            this.needles.push(view);
         }
 
         public drawLine(x,y,toX,toY){
@@ -75,11 +79,16 @@ module game{
 
         //停止旋转
         public stop(){
+            this.twAction.setPaused(true);
             this.twAction.pause()
         }
 
         public insertPos():number{
             return this.y + this.$maxRadius;
+        }
+
+        public get needleList():Array<game.NeedleUI>{
+            return this.needles;
         }
 
     }
