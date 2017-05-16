@@ -12,20 +12,29 @@ var game;
         __extends(NeedleGroupUI, _super);
         function NeedleGroupUI() {
             var _this = _super.call(this) || this;
-            _this.initByNum(6);
+            // this.initByNum(6);
+            game.ApplicationFacade.getInstance().registerMediator(new game.NeedleGroupUIMediator(_this));
             return _this;
-            // this.verticalCenter = 0;
         }
-        NeedleGroupUI.prototype.initByNum = function (num) {
-            this.setContentSize(30, num * (30 + 10));
+        NeedleGroupUI.prototype.initViewByLevel = function (level) {
+            var data = RES.getRes("LevelConfigData_json");
+            var num = data[level].reqNum;
             for (var i = num; i >= 1; i--) {
-                var needle = new game.NeedleUI(i.toString());
-                needle.y = (num - i * (30 + 10));
-                this.addChild(needle);
+                var item = new game.NeedleUI(i.toString());
+                item.y = (num - i * (30 + 10));
+                this.addChild(item);
             }
+            if (num > NeedleGroupUI.showNum) {
+                this.y = this.y + (num - NeedleGroupUI.showNum) * (30 + 10);
+            }
+        };
+        //向前移动一下
+        NeedleGroupUI.prototype.move = function () {
+            egret.Tween.get(this, { loop: false }).to({ y: this.y - (30 + 10) }, 200);
         };
         return NeedleGroupUI;
     }(eui.Group));
+    NeedleGroupUI.showNum = 5;
     game.NeedleGroupUI = NeedleGroupUI;
     __reflect(NeedleGroupUI.prototype, "game.NeedleGroupUI");
 })(game || (game = {}));

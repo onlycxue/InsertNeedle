@@ -21,6 +21,7 @@ var game;
         ApplicationFacade.prototype.initializeController = function () {
             _super.prototype.initializeController.call(this);
             this.registerCommand(ApplicationFacade.STARTUP, game.StartupCommand);
+            // this.registerCommand()
         };
         ApplicationFacade.prototype.startUp = function (rootView) {
             this.sendNotification(ApplicationFacade.STARTUP, rootView);

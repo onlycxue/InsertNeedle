@@ -11,13 +11,41 @@ var game;
     var GameSceneMediator = (function (_super) {
         __extends(GameSceneMediator, _super);
         function GameSceneMediator(viewCompentend) {
-            return _super.call(this, GameSceneMediator.NAME, viewCompentend) || this;
+            var _this = _super.call(this, GameSceneMediator.NAME, viewCompentend) || this;
+            _this.gameScene.addEventListener(egret.TouchEvent.TOUCH_BEGIN, _this.touchEventHandle, _this);
+            return _this;
         }
+        //触摸事件响应
+        GameSceneMediator.prototype.touchEventHandle = function (event) {
+            console.log(">>>>>>>> 触摸事件响应 >>>>>>>>");
+            this.gameScene.shotNeedle(this.checkCollision);
+        };
+        //检测合法性
+        GameSceneMediator.prototype.checkCollision = function (data) {
+            // let needle = <game.NeedleUI><any>data;
+            console.log(">>>>>> 碰撞检测开始执行 >>>>>>>");
+            // this.gameScene.wheel.insertElement(needle);
+        };
         GameSceneMediator.prototype.listNotificationInterests = function () {
-            return [];
+            return [
+                game.GameProxy.GAME_START,
+            ];
         };
         GameSceneMediator.prototype.handleNotification = function (notification) {
+            var data = notification.getBody();
+            switch (notification.getName()) {
+                case game.GameProxy.GAME_START: {
+                    break;
+                }
+            }
         };
+        Object.defineProperty(GameSceneMediator.prototype, "gameScene", {
+            get: function () {
+                return (this.viewComponent);
+            },
+            enumerable: true,
+            configurable: true
+        });
         return GameSceneMediator;
     }(puremvc.Mediator));
     GameSceneMediator.NAME = "GameSceneMediator";

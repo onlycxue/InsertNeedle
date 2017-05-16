@@ -36,7 +36,7 @@ class Main extends eui.UILayer {
     private onResourceLoadComplete(event:RES.ResourceEvent):void{
         
         // console.log(">>>>>>组配置加载完成。");
-        // console.log(RES.getRes("LevelConfigData_json"));
+        console.log(RES.getRes("LevelConfigData_json"));
         if(event.groupName == "loading"){
             
         }

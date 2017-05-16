@@ -35,7 +35,7 @@ var Main = (function (_super) {
     };
     Main.prototype.onResourceLoadComplete = function (event) {
         // console.log(">>>>>>组配置加载完成。");
-        // console.log(RES.getRes("LevelConfigData_json"));
+        console.log(RES.getRes("LevelConfigData_json"));
         if (event.groupName == "loading") {
         }
         else if (event.groupName == "preload") {

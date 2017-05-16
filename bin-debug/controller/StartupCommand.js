@@ -14,9 +14,11 @@ var game;
             return _super.call(this) || this;
         }
         StartupCommand.prototype.execute = function (notification) {
-            console.log(">>>>>> here is StartupCommand");
             var main = notification.getBody();
             game.ApplicationFacade.getInstance().registerMediator(new game.AppContainerMediator(main));
+            (new game.GameCommand()).register();
+            game.ApplicationFacade.getInstance().registerProxy(new game.GameProxy());
+            this.sendNotification(game.GameCommand.START_GAME);
         };
         return StartupCommand;
     }(puremvc.SimpleCommand));

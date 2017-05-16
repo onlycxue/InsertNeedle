@@ -14,10 +14,15 @@ var game;
         function WheelUI() {
             var _this = _super.call(this) || this;
             _this.$radius = 100;
-            _this.$maxRadius = 200;
+            _this.$maxRadius = 250;
             _this.init();
+            _this.addEventListener(egret.Event.ADDED_TO_STAGE, _this.addToStageComplete, _this);
             return _this;
         }
+        WheelUI.prototype.addToStageComplete = function () {
+            this.removeEventListener(egret.Event.ADDED_TO_STAGE, this.addToStageComplete, this);
+            game.ApplicationFacade.getInstance().registerMediator(new game.WheelUIMediator(this));
+        };
         //创建圆盘
         WheelUI.prototype.init = function () {
             // this.$graphics.lineStyle(10,0x00ff00);
@@ -25,10 +30,17 @@ var game;
             this.$graphics.drawCircle(0, 0, this.$radius);
             this.$graphics.endFill();
         };
+        WheelUI.prototype.initViewByLevel = function (level) {
+            var anglesList = RES.getRes("LevelConfigData_json")[level].init;
+            for (var _i = 0, anglesList_1 = anglesList; _i < anglesList_1.length; _i++) {
+                var angles = anglesList_1[_i];
+                this.addElementByAngles(angles);
+            }
+        };
         WheelUI.prototype.addElementByAngles = function (angles) {
             var element = new game.NeedleUI("");
-            element.x = this.$maxRadius * Math.cos(angles);
-            element.y = this.$maxRadius * Math.sin(angles);
+            element.x = this.$maxRadius * Math.cos(2 * Math.PI / 360 * angles);
+            element.y = this.$maxRadius * Math.sin(2 * Math.PI / 360 * angles);
             this.addChild(element);
             this.drawLine(0, 0, element.x, element.y);
         };
@@ -65,6 +77,9 @@ var game;
         //停止旋转
         WheelUI.prototype.stop = function () {
             this.twAction.pause();
+        };
+        WheelUI.prototype.insertPos = function () {
+            return this.y + this.$maxRadius;
         };
         return WheelUI;
     }(egret.Sprite));

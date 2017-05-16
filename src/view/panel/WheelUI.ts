@@ -11,8 +11,7 @@ module game{
 
         public addToStageComplete(){
             this.removeEventListener(egret.Event.ADDED_TO_STAGE,this.addToStageComplete,this);
-            
-
+            ApplicationFacade.getInstance().registerMediator(new game.WheelUIMediator(this));
         }
         //创建圆盘
         public init(){
@@ -23,13 +22,20 @@ module game{
 
         }
         private $radius:number = 100;
-        private $maxRadius:number = 200;
+        private $maxRadius:number = 250;
         private twAction:egret.Tween;
 
+        public initViewByLevel(level:number){
+            
+            let anglesList = RES.getRes("LevelConfigData_json")[level].init;
+            for (let angles of anglesList){
+                this.addElementByAngles(angles);
+            }
+        }
         public addElementByAngles(angles:number){
             let element = new game.NeedleUI("");
-            element.x = this.$maxRadius * Math.cos(angles);
-            element.y = this.$maxRadius * Math.sin(angles);
+            element.x = this.$maxRadius * Math.cos( 2* Math.PI/360 * angles);
+            element.y = this.$maxRadius * Math.sin( 2* Math.PI/360 * angles);
             this.addChild(element);
             this.drawLine(0,0,element.x,element.y);
         }
@@ -59,11 +65,11 @@ module game{
         public play(time,isReverse){
          this.twAction = egret.Tween.get(this,{loop:true});
 
-         if (isReverse) {
-             this.twAction.to({rotation:-360},time);
-         }else{
-             this.twAction.to({rotation:360},time);
-         }
+            if (isReverse) {
+                this.twAction.to({rotation:-360},time);
+            }else{
+                this.twAction.to({rotation:360},time);
+            }
 
         }
 
@@ -71,5 +77,10 @@ module game{
         public stop(){
             this.twAction.pause()
         }
+
+        public insertPos():number{
+            return this.y + this.$maxRadius;
+        }
+
     }
 }

@@ -7,6 +7,10 @@ module game {
 
             var main:game.AppContainer = notification.getBody();
             ApplicationFacade.getInstance().registerMediator(new game.AppContainerMediator(main));
+            (new game.GameCommand()).register();
+            ApplicationFacade.getInstance().registerProxy(new GameProxy());
+
+            this.sendNotification(game.GameCommand.START_GAME);
 
         }
     }
