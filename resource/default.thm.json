@@ -25,6 +25,9 @@
     "resource/eui_skins/ToggleSwitchSkin.exml",
     "resource/eui_skins/VScrollBarSkin.exml",
     "resource/eui_skins/VSliderSkin.exml",
-    "src/skin/LoadingUISkin.exml"
+    "src/skin/EndUISkin.exml",
+    "src/skin/GameMenuUISkin.exml",
+    "src/skin/LoadingUISkin.exml",
+    "src/skin/WinUISkin.exml"
   ]
 }

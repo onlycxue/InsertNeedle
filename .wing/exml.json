@@ -1,7 +1,7 @@
 {
   "global": {
     "globalBindingDataTestObj": [],
-    "globalAdsorbEnable": false,
+    "globalAdsorbEnable": true,
     "globalAutoLayerMarkEnable": true,
     "globalRulerEnable": false,
     "gridColor": 8421504,
@@ -18,5 +18,8 @@
     "useBgImage": true,
     "useBgColor": true,
     "backgroundAlpha": 100
+  },
+  "15c16c34caf": {
+    "bindingDataTestObj": []
   }
 }

@@ -3,6 +3,7 @@
 	<w:Declarations>
 	</w:Declarations>
 	<w:Config id="15c076616e4"/>
-	<e:ProgressBar id="processBar" width="400" height="40" y="655" value="0" enabled="true" horizontalCenter="0"/>
-	<e:Label id="tipsLabel" text="资源加载中..." y="582" italic="true" anchorOffsetY="0" height="38" anchorOffsetX="0" width="196" horizontalCenter="0"/>
+	<e:Rect width="640" height="1136" x="1" y="0" fillColor="0xc8c8c8"/>
+	<e:ProgressBar id="processBar" width="400" height="27" y="663.04" value="0" enabled="true" anchorOffsetY="0" horizontalCenter="0"/>
+	<e:Label id="tipsLabel" text="资源加载中..." y="582" italic="true" anchorOffsetY="0" height="38" anchorOffsetX="0" width="196" horizontalCenter="12" textColor="0x3f3e3e"/>
 </e:Skin>

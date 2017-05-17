@@ -4,7 +4,6 @@ module game {
         public constructor(){
             super();
             this.skinName = "src/skin/LoadingUISkin.exml";
-            
         }
 
        public partAdded(partName: string, instance: any): void {

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<w:Config id="15c16c34caf"/>
+	<e:Rect width="640" height="1136" x="0" y="0" fillColor="0xc8c8c8"/>
+	<e:Button label="开始游戏" y="840.71" anchorOffsetX="0" width="168" horizontalCenter="-3" anchorOffsetY="0" height="64.66"/>
+	<e:Label text="见缝插针" textColor="0x1e1b1b" anchorOffsetX="0" width="185.13" anchorOffsetY="0" height="51.16" size="45" rotation="0" top="247" horizontalCenter="5.5"/>
+</e:Skin>

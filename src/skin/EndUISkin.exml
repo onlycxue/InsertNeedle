@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin width="400" height="300" xmlns:e="http://ns.egret.com/eui">
+	<e:Rect width="400" height="300" x="-1.52" y="0" anchorOffsetX="0" anchorOffsetY="0" fillColor="0x9b9b9b"/>
+	<e:Button label="重新开始" y="155.29" anchorOffsetX="0" width="192" anchorOffsetY="0" height="50" horizontalCenter="0"/>
+	<e:Label text="游戏结束" y="44.25" anchorOffsetX="0" width="161.92" anchorOffsetY="0" height="45.27" size="40" textColor="0x302d2d" horizontalCenter="0"/>
+	<e:Button label="分享" y="219.7" width="192" height="50" horizontalCenter="0"/>
+</e:Skin>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin width="400" height="300" xmlns:e="http://ns.egret.com/eui">
+	<e:Rect width="400" height="300" x="0" y="0" fillColor="0x9b9b9b"/>
+	<e:Button label="分享" x="68" y="193" width="110"/>
+	<e:Button label="下一关" x="237" y="193" width="110" height="50"/>
+	<e:Label text="任务完成" y="62" size="40" anchorOffsetX="0" width="163" anchorOffsetY="0" height="44" horizontalCenter="0" textColor="0x3d3838"/>
+</e:Skin>
