@@ -4,8 +4,7 @@ class Main extends eui.UILayer {
     protected createChildren(): void {
         super.createChildren();
         
-        this.appContainer = new game.AppContainer();
-        this.addChild(this.appContainer);
+
 
         // this.createGameScene();
         RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE,this.onConfigComplete,this);
@@ -14,6 +13,10 @@ class Main extends eui.UILayer {
         // let loadingUI  = new game.LoadingUI();
         // this.addChild(loadingUI);
 
+        // let gameMenuUI = new game.GameMenuWindow();
+        // this.addChild(gameMenuUI);
+        this.appContainer = new game.AppContainer();
+        this.addChild(this.appContainer);
         new eui.Theme("resource/default.thm.json",this.stage);
     }
     

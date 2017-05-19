@@ -13,13 +13,15 @@ var Main = (function (_super) {
     }
     Main.prototype.createChildren = function () {
         _super.prototype.createChildren.call(this);
-        this.appContainer = new game.AppContainer();
-        this.addChild(this.appContainer);
         // this.createGameScene();
         RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
         RES.loadConfig("resource/default.res.json", "resource/");
         // let loadingUI  = new game.LoadingUI();
         // this.addChild(loadingUI);
+        // let gameMenuUI = new game.GameMenuWindow();
+        // this.addChild(gameMenuUI);
+        this.appContainer = new game.AppContainer();
+        this.addChild(this.appContainer);
         new eui.Theme("resource/default.thm.json", this.stage);
     };
     Main.prototype.createGameScene = function () {

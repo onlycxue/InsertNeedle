@@ -15,11 +15,16 @@ var game;
         }
         AppContainer.prototype.createChildren = function () {
             _super.prototype.createChildren.call(this);
-            this.showGameScene();
+            // this.showGameScene();
+            this.showGameMenuWin();
         };
         AppContainer.prototype.showGameScene = function () {
             this.gameScene = new game.GameScene();
             this.addChild(this.gameScene);
+        };
+        AppContainer.prototype.showGameMenuWin = function () {
+            var gameMenuWin = new game.GameMenuWindow();
+            this.addChild(gameMenuWin);
         };
         return AppContainer;
     }(eui.UILayer));

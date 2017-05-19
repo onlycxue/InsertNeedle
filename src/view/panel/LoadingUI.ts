@@ -9,6 +9,7 @@ module game {
        public partAdded(partName: string, instance: any): void {
             super.partAdded(partName, instance);
         }
+
     }
 
 }

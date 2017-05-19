@@ -40,6 +40,7 @@ module game {
             egret.Tween.get(needle,{loop:false}).to({y:this.wheel.insertPos()},200).call(function () {callback(needle)});
 
         }
+
     }
 }
 
