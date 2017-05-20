@@ -24,7 +24,11 @@ module game {
         }
 
         private buttonClick(event: egret.TouchEvent):void {
-            console.log(">>>>>>>> start game btn 按下 >>>>")
+          let mediator: puremvc.IMediator = ApplicationFacade.getInstance().retrieveMediator(game.AppContainerMediator.NAME);
+          let appContainerMediator = <game.AppContainerMediator><any> mediator;
+          appContainerMediator.appContainer.removeChild(this.gameMenuWin);
+
+          this.sendNotification(game.GameCommand.START_GAME);
         }
     }
 }

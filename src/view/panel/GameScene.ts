@@ -12,8 +12,18 @@ module game {
         }   
         public wheel:game.WheelUI;
         public needleGroup:game.NeedleGroupUI;
+        public redShap:egret.Shape;
 
         private initView():void{
+
+             //warn
+            let shap:egret.Shape = new egret.Shape();
+            shap.graphics.beginFill(0xff0000);
+            shap.graphics.drawRect(0,0,640,1136);
+            shap.graphics.endFill();
+            this.addChild(shap);
+            shap.visible = false;
+            this.redShap = shap;
 
             let wheel = new game.WheelUI()
             this.addChild(wheel);
@@ -27,6 +37,7 @@ module game {
             group.y = this.$stage.$stageHeight;
             this.needleGroup = group;
             this.addChild(group);
+
         }
         //发射针
         public shotNeedle(callback:(any) => any){
@@ -40,6 +51,8 @@ module game {
             egret.Tween.get(needle,{loop:false}).to({y:this.wheel.insertPos()},200).call(function () {callback(needle)});
 
         }
+
+
 
     }
 }

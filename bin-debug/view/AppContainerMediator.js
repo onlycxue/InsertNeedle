@@ -16,10 +16,22 @@ var game;
         }
         //要处理的监听事件
         AppContainerMediator.prototype.listNotificationInterests = function () {
-            return [];
+            return [game.GameCommand.START_GAME];
         };
         AppContainerMediator.prototype.handleNotification = function (notification) {
+            switch (notification.getName()) {
+                case game.GameCommand.START_GAME:
+                    this.appContainer.showGameScene();
+                    break;
+            }
         };
+        Object.defineProperty(AppContainerMediator.prototype, "appContainer", {
+            get: function () {
+                return this.viewComponent;
+            },
+            enumerable: true,
+            configurable: true
+        });
         return AppContainerMediator;
     }(puremvc.Mediator));
     AppContainerMediator.NAME = "ApplicationMediator";

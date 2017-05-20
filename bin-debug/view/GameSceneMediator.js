@@ -21,10 +21,8 @@ var game;
         };
         //检测合法性
         GameSceneMediator.prototype.checkCollision = function (data) {
-            console.log(">>>>>>> checkCollision <<<<<<<<");
             var needle = data;
             var nPoint = this.gameScene.localToGlobal(needle.x, needle.y);
-            // let nPoint = egret.Point.create(needle.x,needle.y);
             //判断是否发生碰撞
             for (var _i = 0, _a = this.gameScene.wheel.needleList; _i < _a.length; _i++) {
                 var item = _a[_i];
@@ -32,6 +30,7 @@ var game;
                 if (egret.Point.distance(nPoint, iPoint) <= 60) {
                     console.log(">>>>> 发生碰撞 <<<<<<<<");
                     this.gameScene.wheel.stop();
+                    this.gameScene.redShap.visible = true;
                     return;
                 }
             }

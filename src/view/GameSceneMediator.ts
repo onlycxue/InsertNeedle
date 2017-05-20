@@ -18,12 +18,8 @@ module game{
         }
         //检测合法性
         public checkCollision(data:any){
-            console.log(">>>>>>> checkCollision <<<<<<<<");
             let needle = <game.NeedleUI><any>data;
-
-            
             let nPoint = this.gameScene.localToGlobal(needle.x,needle.y);
-            // let nPoint = egret.Point.create(needle.x,needle.y);
             //判断是否发生碰撞
             for (let item of this.gameScene.wheel.needleList){
 
@@ -33,6 +29,7 @@ module game{
                 if (egret.Point.distance(nPoint,iPoint) <= 60 ){
                     console.log(">>>>> 发生碰撞 <<<<<<<<")
                     this.gameScene.wheel.stop();
+                    this.gameScene.redShap.visible = true;
                     return;
                 }
             }

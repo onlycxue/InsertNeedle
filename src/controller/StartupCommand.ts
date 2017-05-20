@@ -10,7 +10,7 @@ module game {
             (new game.GameCommand()).register();
             ApplicationFacade.getInstance().registerProxy(new GameProxy());
 
-            this.sendNotification(game.GameCommand.START_GAME);
+
 
         }
     }

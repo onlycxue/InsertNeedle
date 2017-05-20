@@ -10,12 +10,22 @@ module game{
         }
         //要处理的监听事件
         public listNotificationInterests():Array<any>{
-            return [];
+            return [game.GameCommand.START_GAME];
         }
 
         public  handleNotification(notification: puremvc.INotification):void {
 
+            switch(notification.getName()){
+
+                case game.GameCommand.START_GAME:
+                    this.appContainer.showGameScene();
+                    break;
+            }
             
+        }
+        public get appContainer():game.AppContainer{
+
+            return <game.AppContainer><any> this.viewComponent;
         }
 
     }

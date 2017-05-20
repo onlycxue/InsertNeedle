@@ -38,10 +38,11 @@ class Main extends eui.UILayer {
     }
     private onResourceLoadComplete(event:RES.ResourceEvent):void{
         
-        // console.log(">>>>>>组配置加载完成。");
-        console.log(RES.getRes("LevelConfigData_json"));
         if(event.groupName == "loading"){
-            
+
+         let loadingUI  = new game.LoadingUI();
+         this.addChild(loadingUI);
+
         }
         else if(event.groupName == "preload"){
             RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE,this.onResourceLoadComplete,this);

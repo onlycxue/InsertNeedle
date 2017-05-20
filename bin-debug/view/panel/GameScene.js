@@ -20,6 +20,14 @@ var game;
             game.ApplicationFacade.getInstance().registerMediator(new game.GameSceneMediator(this));
         };
         GameScene.prototype.initView = function () {
+            //warn
+            var shap = new egret.Shape();
+            shap.graphics.beginFill(0xff0000);
+            shap.graphics.drawRect(0, 0, 640, 1136);
+            shap.graphics.endFill();
+            this.addChild(shap);
+            shap.visible = false;
+            this.redShap = shap;
             var wheel = new game.WheelUI();
             this.addChild(wheel);
             wheel.x = this.$stage.$stageWidth / 2;

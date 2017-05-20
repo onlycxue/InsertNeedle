@@ -21,5 +21,15 @@
   },
   "15c16c34caf": {
     "bindingDataTestObj": []
+  },
+  "15c210c413c": {
+    "backgroundX": 0,
+    "backgroundY": 0,
+    "backgroundWidth": -1,
+    "backgroundHeight": -1,
+    "useBgImage": true,
+    "useBgColor": true,
+    "backgroundAlpha": 100,
+    "bindingDataTestObj": []
   }
 }

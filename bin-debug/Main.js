@@ -36,9 +36,9 @@ var Main = (function (_super) {
         // console.log(RES.getRes("LevelConfigData_json")); 没执行loadGroup 是获取不到数据的。
     };
     Main.prototype.onResourceLoadComplete = function (event) {
-        // console.log(">>>>>>组配置加载完成。");
-        console.log(RES.getRes("LevelConfigData_json"));
         if (event.groupName == "loading") {
+            var loadingUI = new game.LoadingUI();
+            this.addChild(loadingUI);
         }
         else if (event.groupName == "preload") {
             RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);

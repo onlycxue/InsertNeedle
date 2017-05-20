@@ -29,7 +29,10 @@ var game;
             configurable: true
         });
         GameMenuWinMediator.prototype.buttonClick = function (event) {
-            console.log(">>>>>>>> start game btn 按下 >>>>");
+            var mediator = game.ApplicationFacade.getInstance().retrieveMediator(game.AppContainerMediator.NAME);
+            var appContainerMediator = mediator;
+            appContainerMediator.appContainer.removeChild(this.gameMenuWin);
+            this.sendNotification(game.GameCommand.START_GAME);
         };
         return GameMenuWinMediator;
     }(puremvc.Mediator));

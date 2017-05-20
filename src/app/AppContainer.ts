@@ -6,7 +6,7 @@ module game {
 
 
             // this.showGameScene();
-            this.showGameMenuWin();
+            // this.showGameMenuWin();
         }  
         private gameScene: game.GameScene;
 
@@ -19,6 +19,13 @@ module game {
             let gameMenuWin = new game.GameMenuWindow();
             this.addChild(gameMenuWin);
         }
+
+        public showEndPopup():void {
+            let endPopup = new game.EndPopup();
+            this.addChild(endPopup);
+        }
+
+        
     }
 
 
