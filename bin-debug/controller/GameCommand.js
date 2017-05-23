@@ -15,6 +15,8 @@ var game;
         }
         GameCommand.prototype.register = function () {
             game.ApplicationFacade.getInstance().registerCommand(GameCommand.START_GAME, GameCommand);
+            game.ApplicationFacade.getInstance().registerCommand(GameCommand.OVER_GAME, GameCommand);
+            game.ApplicationFacade.getInstance().registerCommand(GameCommand.WIN_GAME, GameCommand);
         };
         GameCommand.prototype.execute = function (notification) {
             var gameProxy = (game.ApplicationFacade.getInstance().retrieveProxy(game.GameProxy.NAME));
@@ -23,11 +25,21 @@ var game;
                     gameProxy.startGame();
                     break;
                 }
+                case GameCommand.OVER_GAME: {
+                    gameProxy.setResult(false);
+                    break;
+                }
+                case GameCommand.WIN_GAME: {
+                    gameProxy.setResult(true);
+                    break;
+                }
             }
         };
         return GameCommand;
     }(puremvc.SimpleCommand));
     GameCommand.START_GAME = "start_game";
+    GameCommand.OVER_GAME = "over_game";
+    GameCommand.WIN_GAME = "win_game";
     game.GameCommand = GameCommand;
     __reflect(GameCommand.prototype, "game.GameCommand");
 })(game || (game = {}));

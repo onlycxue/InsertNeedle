@@ -11,8 +11,9 @@ module game {
         }    
 
         public createCompleteEvent(event:eui.UIEvent):void {
+            console.log(">>>>>> game . createCompleteEvent ")
             this.removeEventListener(eui.UIEvent.CREATION_COMPLETE,this.createCompleteEvent,this);
-            ApplicationFacade.getInstance().registerMediator(new GameMenuWinMediator(this));
+            ApplicationFacade.getInstance().registerMediator(new game.GameMenuWinMediator(this));
         }
 
         public partAdded(partName: string,instance: any):void{

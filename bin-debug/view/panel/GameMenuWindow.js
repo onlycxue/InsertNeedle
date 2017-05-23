@@ -18,6 +18,7 @@ var game;
             return _this;
         }
         GameMenuWindow.prototype.createCompleteEvent = function (event) {
+            console.log(">>>>>> game . createCompleteEvent ");
             this.removeEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
             game.ApplicationFacade.getInstance().registerMediator(new game.GameMenuWinMediator(this));
         };

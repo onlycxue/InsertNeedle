@@ -6,7 +6,9 @@ module game {
 
 
             // this.showGameScene();
-            // this.showGameMenuWin();
+            this.showGameMenuWin();
+            // this.showEndPopup();
+            // this.showWinPopup();
         }  
         private gameScene: game.GameScene;
 
@@ -25,6 +27,10 @@ module game {
             this.addChild(endPopup);
         }
 
+        public showWinPopup():void {
+            let winPopup = new game.WinPopup();
+            this.addChild(winPopup);
+        }
         
     }
 

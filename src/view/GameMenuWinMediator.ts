@@ -1,14 +1,12 @@
 module game {
 
-    export class GameMenuWinMediator extends puremvc.Mediator {
+    export class GameMenuWinMediator extends puremvc.Mediator implements puremvc.IMediator {
 
         public static NAME:string = "GameMenuWinMediator";
-        constructor(viewComponent:any){
+        public constructor(viewComponent:any){
             super(GameMenuWinMediator.NAME,viewComponent)
-
-            this.gameMenuWin.addEventListener(egret.TouchEvent.TOUCH_TAP,this.buttonClick,this);
+            this.gameMenuWin.startBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.buttonClick,this);
         }
-
         //要处理的监听事件
         public listNotificationInterests():Array<any>{
             return [];

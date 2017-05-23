@@ -16,15 +16,11 @@ var Main = (function (_super) {
         // this.createGameScene();
         RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
         RES.loadConfig("resource/default.res.json", "resource/");
-        // let loadingUI  = new game.LoadingUI();
-        // this.addChild(loadingUI);
-        // let gameMenuUI = new game.GameMenuWindow();
-        // this.addChild(gameMenuUI);
-        this.appContainer = new game.AppContainer();
-        this.addChild(this.appContainer);
         new eui.Theme("resource/default.thm.json", this.stage);
     };
     Main.prototype.createGameScene = function () {
+        this.appContainer = new game.AppContainer();
+        this.addChild(this.appContainer);
         game.ApplicationFacade.getInstance().startUp(this.appContainer);
         // this.addChild(new game.LoadingUI()); 
     };

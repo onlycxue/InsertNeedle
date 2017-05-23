@@ -1,6 +1,6 @@
 module game{
 
-    export class EndPopupMediator extends puremvc.Mediator{
+    export class EndPopupMediator extends puremvc.Mediator implements puremvc.IMediator{
 
         public static NAME:string = "EndPopupMediator";
 
@@ -8,6 +8,10 @@ module game{
             super(EndPopupMediator.NAME,viewComponent);
             this.endPopup.restartBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.restartBtnClick,this);
             this.endPopup.shareBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.shareBtnClick,this);
+            // console.log(">>>>>>>>>>>>>>>>>>")
+            // console.log(this.endPopup);
+            // console.log(this.endPopup.restartBtn);
+
         }
 
         public listNotificationInterests():Array<any>{
@@ -20,8 +24,8 @@ module game{
         }
 
         public restartBtnClick(event: egret.TouchEvent){
-            console.log(">>>>> restartBtn >>>>>> clicked");
-
+            // console.log(">>>>> restartBtn >>>>>> clicked");
+            this.sendNotification(GameCommand.START_GAME);
         }
 
         public shareBtnClick(event: egret.TouchEvent){
@@ -30,7 +34,7 @@ module game{
         }
 
         public get endPopup():game.EndPopup{
-            return <game.EndPopup> this.viewComponent;
+            return <game.EndPopup><any>(this.viewComponent);
         }     
     }
 

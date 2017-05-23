@@ -12,7 +12,7 @@ var game;
         __extends(GameMenuWinMediator, _super);
         function GameMenuWinMediator(viewComponent) {
             var _this = _super.call(this, GameMenuWinMediator.NAME, viewComponent) || this;
-            _this.gameMenuWin.addEventListener(egret.TouchEvent.TOUCH_TAP, _this.buttonClick, _this);
+            _this.gameMenuWin.startBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, _this.buttonClick, _this);
             return _this;
         }
         //要处理的监听事件
@@ -38,6 +38,6 @@ var game;
     }(puremvc.Mediator));
     GameMenuWinMediator.NAME = "GameMenuWinMediator";
     game.GameMenuWinMediator = GameMenuWinMediator;
-    __reflect(GameMenuWinMediator.prototype, "game.GameMenuWinMediator");
+    __reflect(GameMenuWinMediator.prototype, "game.GameMenuWinMediator", ["puremvc.IMediator", "puremvc.INotifier"]);
 })(game || (game = {}));
 //# sourceMappingURL=GameMenuWinMediator.js.map

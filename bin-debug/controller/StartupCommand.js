@@ -17,6 +17,7 @@ var game;
             var main = notification.getBody();
             game.ApplicationFacade.getInstance().registerMediator(new game.AppContainerMediator(main));
             (new game.GameCommand()).register();
+            (new game.SceneCommand()).register();
             game.ApplicationFacade.getInstance().registerProxy(new game.GameProxy());
         };
         return StartupCommand;

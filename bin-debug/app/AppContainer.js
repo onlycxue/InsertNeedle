@@ -17,6 +17,8 @@ var game;
             _super.prototype.createChildren.call(this);
             // this.showGameScene();
             this.showGameMenuWin();
+            // this.showEndPopup();
+            // this.showWinPopup();
         };
         AppContainer.prototype.showGameScene = function () {
             this.gameScene = new game.GameScene();
@@ -25,6 +27,14 @@ var game;
         AppContainer.prototype.showGameMenuWin = function () {
             var gameMenuWin = new game.GameMenuWindow();
             this.addChild(gameMenuWin);
+        };
+        AppContainer.prototype.showEndPopup = function () {
+            var endPopup = new game.EndPopup();
+            this.addChild(endPopup);
+        };
+        AppContainer.prototype.showWinPopup = function () {
+            var winPopup = new game.WinPopup();
+            this.addChild(winPopup);
         };
         return AppContainer;
     }(eui.UILayer));

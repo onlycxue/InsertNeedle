@@ -2,28 +2,9 @@
 <e:Skin width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:tween="egret.tween.*">
 	<w:Config id="15c210c413c"/>
 	<w:Declarations>
-		<tween:TweenGroup id="start">
-			<tween:TweenItem target="{group}">
-				<tween:Set>
-					<tween:props>
-						<e:Object y="{0}"/>
-					</tween:props>
-				</tween:Set>
-				<tween:To duration="250" ease="sineIn">
-					<tween:props>
-						<e:Object y="{111}"/>
-					</tween:props>
-				</tween:To>
-				<tween:To duration="250" ease="sineOut">
-					<tween:props>
-						<e:Object y="{387}"/>
-					</tween:props>
-				</tween:To>
-			</tween:TweenItem>
-		</tween:TweenGroup>
 	</w:Declarations>
-	<e:Group id="group" width="400" height="300" x="126" y="462" anchorOffsetX="0" anchorOffsetY="0">
-		<e:Rect id="rect" width="400" height="300" x="1" y="0" anchorOffsetX="0" anchorOffsetY="0" fillColor="0x9b9b9b" scaleX="1" scaleY="1"/>
+	<e:Group id="group" width="400" height="300" anchorOffsetX="0" anchorOffsetY="0" horizontalCenter="0" verticalCenter="0">
+		<e:Rect id="rect" width="400" height="300" anchorOffsetX="0" anchorOffsetY="0" fillColor="0x9b9b9b" scaleX="1" scaleY="1" verticalCenter="0" horizontalCenter="0"/>
 		<e:Button id="restartBtn" label="重新开始" y="150" anchorOffsetX="0" width="192" anchorOffsetY="0" height="50" horizontalCenter="2" x="98" scaleX="1" scaleY="1"/>
 		<e:Label text="游戏结束" y="41.14" anchorOffsetX="0" width="161.92" anchorOffsetY="0" height="49.27" size="40" textColor="0x302d2d" scaleX="1" scaleY="1" horizontalCenter="0"/>
 		<e:Button id="shareBtn" label="分享" y="214.41" width="192" height="50" horizontalCenter="2" x="98" scaleX="1" scaleY="1"/>

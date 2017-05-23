@@ -8,9 +8,8 @@ module game {
             var main:game.AppContainer = notification.getBody();
             ApplicationFacade.getInstance().registerMediator(new game.AppContainerMediator(main));
             (new game.GameCommand()).register();
+            (new game.SceneCommand()).register();
             ApplicationFacade.getInstance().registerProxy(new GameProxy());
-
-
 
         }
     }

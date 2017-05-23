@@ -27,9 +27,10 @@ module game{
                 let iPoint = this.gameScene.wheel.localToGlobal(item.x,item.y);
 
                 if (egret.Point.distance(nPoint,iPoint) <= 60 ){
-                    console.log(">>>>> 发生碰撞 <<<<<<<<")
                     this.gameScene.wheel.stop();
                     this.gameScene.redShap.visible = true;
+
+                    this.sendNotification(SceneCommand.SHOW_END);
                     return;
                 }
             }
