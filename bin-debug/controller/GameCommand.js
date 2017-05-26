@@ -17,6 +17,7 @@ var game;
             game.ApplicationFacade.getInstance().registerCommand(GameCommand.START_GAME, GameCommand);
             game.ApplicationFacade.getInstance().registerCommand(GameCommand.OVER_GAME, GameCommand);
             game.ApplicationFacade.getInstance().registerCommand(GameCommand.WIN_GAME, GameCommand);
+            // ApplicationFacade.getInstance().registerCommand(GameCommand.RESTART_GAME,GameCommand);
         };
         GameCommand.prototype.execute = function (notification) {
             var gameProxy = (game.ApplicationFacade.getInstance().retrieveProxy(game.GameProxy.NAME));
@@ -40,6 +41,7 @@ var game;
     GameCommand.START_GAME = "start_game";
     GameCommand.OVER_GAME = "over_game";
     GameCommand.WIN_GAME = "win_game";
+    GameCommand.RESTART_GAME = "restart_game";
     game.GameCommand = GameCommand;
     __reflect(GameCommand.prototype, "game.GameCommand");
 })(game || (game = {}));

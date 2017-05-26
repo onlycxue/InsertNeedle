@@ -30,6 +30,7 @@ var game;
                 if (egret.Point.distance(nPoint, iPoint) <= 60) {
                     this.gameScene.wheel.stop();
                     this.gameScene.redShap.visible = true;
+                    this.gameScene.wheel.insertElement(needle);
                     this.sendNotification(game.SceneCommand.SHOW_END);
                     return;
                 }
@@ -46,6 +47,7 @@ var game;
             var data = notification.getBody();
             switch (notification.getName()) {
                 case game.GameProxy.GAME_START: {
+                    this.gameScene.redShap.visible = false;
                     break;
                 }
             }

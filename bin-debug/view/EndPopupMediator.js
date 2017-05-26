@@ -25,8 +25,12 @@ var game;
         EndPopupMediator.prototype.handleNotification = function (notification) {
         };
         EndPopupMediator.prototype.restartBtnClick = function (event) {
-            // console.log(">>>>> restartBtn >>>>>> clicked");
+            console.log(">>>>> restartBtn >>>>>> clicked");
+            var mediator = game.ApplicationFacade.getInstance().retrieveMediator(game.AppContainerMediator.NAME);
+            var appContainerMediator = mediator;
+            // appContainerMediator.appContainer.removeChild(this.endPopup);
             this.sendNotification(game.GameCommand.START_GAME);
+            this.endPopup.visible = false;
         };
         EndPopupMediator.prototype.shareBtnClick = function (event) {
             console.log(">>>>> shareBtn >>>>>> clicked");

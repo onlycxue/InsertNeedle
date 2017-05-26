@@ -25,6 +25,7 @@ module game{
         private $maxRadius:number = 250;
         private twAction:egret.Tween;
         private needles:Array<game.NeedleUI> = [];
+        private lines:Array<egret.Shape> = [];
 
         public initViewByLevel(level:number){
             
@@ -34,7 +35,8 @@ module game{
             }
         }
         public addElementByAngles(angles:number){
-            let element = new game.NeedleUI("");
+            // let element = new game.NeedleUI("");
+            let element = ObjectPool.getPool('game.NeedleUI').borrowObject();
             element.x = this.$maxRadius * Math.cos( 2* Math.PI/360 * angles);
             element.y = this.$maxRadius * Math.sin( 2* Math.PI/360 * angles);
             this.addChild(element);
@@ -58,12 +60,14 @@ module game{
         }
 
         public drawLine(x,y,toX,toY){
-            let line:egret.Shape = new egret.Shape();
+            // let line:egret.Shape = new egret.Shape();
+            let line = ObjectPool.getPool('egret.Shape').borrowObject();
             line.graphics.lineStyle(4,0x000000) ;
             line.graphics.moveTo(x,y);
             line.graphics.lineTo(toX,toY);          
             line.graphics.endFill();
             this.addChild(line);
+            this.lines.push(line);
         }
         //开始旋转
         public play(time,isReverse){
@@ -90,6 +94,21 @@ module game{
         public get needleList():Array<game.NeedleUI>{
             return this.needles;
         }
+        /**
+         * 清除所有
+         */
+        public clearObjects():void{
+            //清除针
+            for(let v of this.needles){
+                this.removeChild(v);
+                ObjectPool.getPool("game.NeedleUI").returnObject(v);
+            }
+            //清除线
+            for (let v of this.lines){
+                this.removeChild(v);
+                ObjectPool.getPool("egret.Shape").returnObject(v);
+            }
 
+        }
     }
 }

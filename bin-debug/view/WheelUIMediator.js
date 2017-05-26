@@ -22,6 +22,7 @@ var game;
             var data = notification.getBody();
             switch (notification.getName()) {
                 case game.GameProxy.GAME_START:
+                    this.wheelUI.clearObjects();
                     this.wheelUI.initViewByLevel(data);
                     break;
             }

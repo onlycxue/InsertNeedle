@@ -20,17 +20,30 @@ var game;
             var data = RES.getRes("LevelConfigData_json");
             var num = data[level].reqNum;
             for (var i = num; i >= 1; i--) {
-                var item = new game.NeedleUI(i.toString());
-                item.y = (num - i * (30 + 10));
+                var item = game.ObjectPool.getPool("game.NeedleUI").borrowObject();
                 this.addChild(item);
+                item.setText(i.toString());
+                item.y = (num - i * (30 + 10));
+                item.x = 0;
             }
             if (num > NeedleGroupUI.showNum) {
                 this.y = this.y + (num - NeedleGroupUI.showNum) * (30 + 10);
             }
+            console.log(this.numElements);
+            // console.log(this.y);
+            this.y = 1736;
         };
         //向前移动一下
         NeedleGroupUI.prototype.move = function () {
             egret.Tween.get(this, { loop: false }).to({ y: this.y - (30 + 10) }, 200);
+        };
+        NeedleGroupUI.prototype.clearObjects = function () {
+            var needle;
+            var num = this.numChildren;
+            for (var i = num - 1; i >= 0; i--) {
+                needle = this.removeChildAt(i);
+                game.ObjectPool.getPool("game.NeedleUI").returnObject(needle);
+            }
         };
         return NeedleGroupUI;
     }(eui.Group));

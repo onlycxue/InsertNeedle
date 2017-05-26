@@ -20,6 +20,7 @@ module game{
 
             switch(notification.getName()){
                 case GameProxy.GAME_START:
+                    this.wheelUI.clearObjects();
                     this.wheelUI.initViewByLevel(<number><any>data);
                 break;
             }

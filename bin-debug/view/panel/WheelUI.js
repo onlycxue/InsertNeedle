@@ -16,6 +16,7 @@ var game;
             _this.$radius = 100;
             _this.$maxRadius = 250;
             _this.needles = [];
+            _this.lines = [];
             _this.init();
             _this.addEventListener(egret.Event.ADDED_TO_STAGE, _this.addToStageComplete, _this);
             return _this;
@@ -39,7 +40,8 @@ var game;
             }
         };
         WheelUI.prototype.addElementByAngles = function (angles) {
-            var element = new game.NeedleUI("");
+            // let element = new game.NeedleUI("");
+            var element = game.ObjectPool.getPool('game.NeedleUI').borrowObject();
             element.x = this.$maxRadius * Math.cos(2 * Math.PI / 360 * angles);
             element.y = this.$maxRadius * Math.sin(2 * Math.PI / 360 * angles);
             this.addChild(element);
@@ -61,12 +63,14 @@ var game;
             this.needles.push(view);
         };
         WheelUI.prototype.drawLine = function (x, y, toX, toY) {
-            var line = new egret.Shape();
+            // let line:egret.Shape = new egret.Shape();
+            var line = game.ObjectPool.getPool('egret.Shape').borrowObject();
             line.graphics.lineStyle(4, 0x000000);
             line.graphics.moveTo(x, y);
             line.graphics.lineTo(toX, toY);
             line.graphics.endFill();
             this.addChild(line);
+            this.lines.push(line);
         };
         //开始旋转
         WheelUI.prototype.play = function (time, isReverse) {
@@ -93,6 +97,23 @@ var game;
             enumerable: true,
             configurable: true
         });
+        /**
+         * 清除所有
+         */
+        WheelUI.prototype.clearObjects = function () {
+            //清除针
+            for (var _i = 0, _a = this.needles; _i < _a.length; _i++) {
+                var v = _a[_i];
+                this.removeChild(v);
+                game.ObjectPool.getPool("game.NeedleUI").returnObject(v);
+            }
+            //清除线
+            for (var _b = 0, _c = this.lines; _b < _c.length; _b++) {
+                var v = _c[_b];
+                this.removeChild(v);
+                game.ObjectPool.getPool("egret.Shape").returnObject(v);
+            }
+        };
         return WheelUI;
     }(egret.Sprite));
     game.WheelUI = WheelUI;

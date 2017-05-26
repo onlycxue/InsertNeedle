@@ -10,11 +10,14 @@ module game{
 
         public static WIN_GAME: string = "win_game";
 
+        public static RESTART_GAME: string = "restart_game";
+
         public register():void{
 
             ApplicationFacade.getInstance().registerCommand(GameCommand.START_GAME,GameCommand);
             ApplicationFacade.getInstance().registerCommand(GameCommand.OVER_GAME,GameCommand);
             ApplicationFacade.getInstance().registerCommand(GameCommand.WIN_GAME,GameCommand);
+            // ApplicationFacade.getInstance().registerCommand(GameCommand.RESTART_GAME,GameCommand);
         }
         public execute(notification:puremvc.INotification):void{
 

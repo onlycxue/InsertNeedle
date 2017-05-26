@@ -21,6 +21,7 @@ module game{
             switch(notification.getName()){
 
                 case GameProxy.GAME_START:
+                        this.needleGroupUI.clearObjects();
                         this.needleGroupUI.initViewByLevel(<number><any>data);
                     break
 
