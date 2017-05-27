@@ -20,6 +20,7 @@ var game;
             game.ApplicationFacade.getInstance().registerMediator(new game.GameSceneMediator(this));
         };
         GameScene.prototype.initView = function () {
+            console.log(">>>>>>>> GameScene init View >>>>>>>>>>>");
             //warn
             var shap = new egret.Shape();
             shap.graphics.beginFill(0xff0000);

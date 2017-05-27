@@ -14,9 +14,7 @@ var game;
             return _super.call(this, WheelUIMediator.NAME, view) || this;
         }
         WheelUIMediator.prototype.listNotificationInterests = function () {
-            return [
-                game.GameProxy.GAME_START,
-            ];
+            return [];
         };
         WheelUIMediator.prototype.handleNotification = function (notification) {
             var data = notification.getBody();

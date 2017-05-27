@@ -16,6 +16,7 @@ module game {
 
         private initView():void{
 
+            console.log(">>>>>>>> GameScene init View >>>>>>>>>>>")
              //warn
             let shap:egret.Shape = new egret.Shape();
             shap.graphics.beginFill(0xff0000);

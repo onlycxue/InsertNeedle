@@ -14,9 +14,7 @@ var game;
             return _super.call(this, NeedleGroupUIMediator.NAME, view) || this;
         }
         NeedleGroupUIMediator.prototype.listNotificationInterests = function () {
-            return [
-                game.GameProxy.GAME_START
-            ];
+            return [];
         };
         NeedleGroupUIMediator.prototype.handleNotification = function (notification) {
             var data = notification.getBody();

@@ -13,6 +13,7 @@ module game {
         private gameScene: game.GameScene;
 
         public showGameScene():void{
+            
             this.gameScene = new game.GameScene();
             this.addChild(this.gameScene);
         }

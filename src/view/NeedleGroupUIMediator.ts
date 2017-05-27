@@ -10,7 +10,7 @@ module game{
 
         listNotificationInterests():string[]{
             return [
-               GameProxy.GAME_START
+            //    GameProxy.GAME_START
             ]
         }
 

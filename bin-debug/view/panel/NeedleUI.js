@@ -14,6 +14,7 @@ var game;
             var _this = _super.call(this) || this;
             _this.$radius = 20;
             _this.text = "";
+            _this.shp = null;
             _this.addEventListener(egret.Event.ADDED_TO_STAGE, _this.onAddToStage, _this);
             _this.text = text;
             return _this;
@@ -26,12 +27,17 @@ var game;
             configurable: true
         });
         NeedleUI.prototype.onAddToStage = function (event) {
+            console.log(">>>>>>Needle  on Add To Stage >>>>>>>>>");
+            if (this.shp && this.numLabel) {
+                return;
+            }
             var shp = new egret.Shape();
             //  shp.graphics.lineStyle(2,0x00ff00);
             shp.graphics.beginFill(0x000000, 1);
             shp.graphics.drawCircle(0, 0, this.$radius);
             shp.graphics.endFill();
             this.addChild(shp);
+            this.shp = shp;
             this.numLabel = new egret.TextField();
             this.numLabel.text = this.text;
             this.numLabel.x = -this.numLabel.width / 2;

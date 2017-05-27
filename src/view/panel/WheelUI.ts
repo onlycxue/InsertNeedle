@@ -103,12 +103,15 @@ module game{
                 this.removeChild(v);
                 ObjectPool.getPool("game.NeedleUI").returnObject(v);
             }
+
             //清除线
             for (let v of this.lines){
                 this.removeChild(v);
                 ObjectPool.getPool("egret.Shape").returnObject(v);
             }
 
+            this.needles = [];
+            this.lines = [];
         }
     }
 }

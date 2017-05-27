@@ -48,6 +48,14 @@ var game;
             switch (notification.getName()) {
                 case game.GameProxy.GAME_START: {
                     this.gameScene.redShap.visible = false;
+                    // this.wheelUI.clearObjects();
+                    // this.wheelUI.initViewByLevel(<number><any>data);
+                    this.gameScene.wheel.clearObjects();
+                    this.gameScene.wheel.initViewByLevel(data);
+                    // this.needleGroupUI.clearObjects();
+                    // this.needleGroupUI.initViewByLevel(<number><any>data);
+                    this.gameScene.needleGroup.clearObjects();
+                    this.gameScene.needleGroup.initViewByLevel(data);
                     break;
                 }
             }

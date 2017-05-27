@@ -113,6 +113,8 @@ var game;
                 this.removeChild(v);
                 game.ObjectPool.getPool("egret.Shape").returnObject(v);
             }
+            this.needles = [];
+            this.lines = [];
         };
         return WheelUI;
     }(egret.Sprite));
