@@ -41,21 +41,19 @@ var game;
         GameSceneMediator.prototype.listNotificationInterests = function () {
             return [
                 game.GameProxy.GAME_START,
+                game.GameProxy.GAME_RESTART,
             ];
         };
         GameSceneMediator.prototype.handleNotification = function (notification) {
             var data = notification.getBody();
             switch (notification.getName()) {
                 case game.GameProxy.GAME_START: {
+                    break;
+                }
+                case game.GameProxy.GAME_RESTART: {
+                    this.gameScene.wheel.resume();
+                    // this.gameScene.wheel.play(4000,false); 
                     this.gameScene.redShap.visible = false;
-                    // this.wheelUI.clearObjects();
-                    // this.wheelUI.initViewByLevel(<number><any>data);
-                    this.gameScene.wheel.clearObjects();
-                    this.gameScene.wheel.initViewByLevel(data);
-                    // this.needleGroupUI.clearObjects();
-                    // this.needleGroupUI.initViewByLevel(<number><any>data);
-                    this.gameScene.needleGroup.clearObjects();
-                    this.gameScene.needleGroup.initViewByLevel(data);
                     break;
                 }
             }

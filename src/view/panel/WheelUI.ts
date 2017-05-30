@@ -60,8 +60,8 @@ module game{
         }
 
         public drawLine(x,y,toX,toY){
-            // let line:egret.Shape = new egret.Shape();
-            let line = ObjectPool.getPool('egret.Shape').borrowObject();
+            let line:egret.Shape = new egret.Shape();
+            // let line = ObjectPool.getPool('egret.Shape').borrowObject();
             line.graphics.lineStyle(4,0x000000) ;
             line.graphics.moveTo(x,y);
             line.graphics.lineTo(toX,toY);          
@@ -84,9 +84,16 @@ module game{
         //停止旋转
         public stop(){
             this.twAction.setPaused(true);
-            this.twAction.pause()
+            this.twAction.pause();
         }
+        public resume(){
+            // this.twAction.setPaused(false);
+            // egret.Tween.resumeTweens(this);
 
+            this.twAction.setPaused(false);
+            this.twAction.play();
+
+        }
         public insertPos():number{
             return this.y + this.$maxRadius;
         }
@@ -107,7 +114,7 @@ module game{
             //清除线
             for (let v of this.lines){
                 this.removeChild(v);
-                ObjectPool.getPool("egret.Shape").returnObject(v);
+                // ObjectPool.getPool("egret.Shape").returnObject(v);
             }
 
             this.needles = [];

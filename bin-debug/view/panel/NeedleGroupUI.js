@@ -30,8 +30,6 @@ var game;
                 this.y = this.y + (num - NeedleGroupUI.showNum) * (30 + 10);
             }
             console.log(this.numElements);
-            // console.log(this.y);
-            this.y = 1736;
         };
         //向前移动一下
         NeedleGroupUI.prototype.move = function () {

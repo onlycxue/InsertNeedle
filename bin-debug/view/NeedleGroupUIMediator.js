@@ -14,13 +14,20 @@ var game;
             return _super.call(this, NeedleGroupUIMediator.NAME, view) || this;
         }
         NeedleGroupUIMediator.prototype.listNotificationInterests = function () {
-            return [];
+            return [
+                game.GameProxy.GAME_START,
+                game.GameProxy.GAME_RESTART
+            ];
         };
         NeedleGroupUIMediator.prototype.handleNotification = function (notification) {
             var data = notification.getBody();
             switch (notification.getName()) {
                 case game.GameProxy.GAME_START:
+                    this.needleGroupUI.initViewByLevel(data);
+                    break;
+                case game.GameProxy.GAME_RESTART:
                     this.needleGroupUI.clearObjects();
+                    this.needleGroupUI.y = this.needleGroupUI.parent.$stage.$stageHeight;
                     this.needleGroupUI.initViewByLevel(data);
                     break;
             }

@@ -21,16 +21,27 @@ var game;
             // this.showWinPopup();
         };
         AppContainer.prototype.showGameScene = function () {
-            this.gameScene = new game.GameScene();
-            this.addChild(this.gameScene);
+            if (this.gameScene instanceof game.GameScene) {
+                console.log(">>>>>>> 已经创建 >>>>>>>");
+            }
+            else {
+                this.gameScene = new game.GameScene();
+                this.addChild(this.gameScene);
+            }
         };
         AppContainer.prototype.showGameMenuWin = function () {
             var gameMenuWin = new game.GameMenuWindow();
             this.addChild(gameMenuWin);
         };
         AppContainer.prototype.showEndPopup = function () {
-            var endPopup = new game.EndPopup();
-            this.addChild(endPopup);
+            if (this.endPopup instanceof game.EndPopup) {
+                this.endPopup.visible = true;
+                console.log(">>>>> 已经创建 直接显示 >>>>>");
+            }
+            else {
+                this.endPopup = new game.EndPopup();
+                this.addChild(this.endPopup);
+            }
         };
         AppContainer.prototype.showWinPopup = function () {
             var winPopup = new game.WinPopup();

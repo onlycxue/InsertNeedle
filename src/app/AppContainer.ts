@@ -11,21 +11,34 @@ module game {
             // this.showWinPopup();
         }  
         private gameScene: game.GameScene;
-
+        private endPopup:game.EndPopup;
         public showGameScene():void{
-            
-            this.gameScene = new game.GameScene();
-            this.addChild(this.gameScene);
+            if (this.gameScene instanceof game.GameScene){
+                console.log(">>>>>>> 已经创建 >>>>>>>")
+            }else {
+                this.gameScene = new game.GameScene();
+                this.addChild(this.gameScene);
+            }
         }
 
         public showGameMenuWin():void {
+            
+
             let gameMenuWin = new game.GameMenuWindow();
             this.addChild(gameMenuWin);
         }
 
         public showEndPopup():void {
-            let endPopup = new game.EndPopup();
-            this.addChild(endPopup);
+            
+            if (this.endPopup instanceof game.EndPopup){
+                this.endPopup.visible = true;
+                console.log(">>>>> 已经创建 直接显示 >>>>>");
+            }
+            else{
+                this.endPopup = new game.EndPopup();
+                this.addChild(this.endPopup);
+            }
+
         }
 
         public showWinPopup():void {

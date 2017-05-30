@@ -63,8 +63,8 @@ var game;
             this.needles.push(view);
         };
         WheelUI.prototype.drawLine = function (x, y, toX, toY) {
-            // let line:egret.Shape = new egret.Shape();
-            var line = game.ObjectPool.getPool('egret.Shape').borrowObject();
+            var line = new egret.Shape();
+            // let line = ObjectPool.getPool('egret.Shape').borrowObject();
             line.graphics.lineStyle(4, 0x000000);
             line.graphics.moveTo(x, y);
             line.graphics.lineTo(toX, toY);
@@ -86,6 +86,12 @@ var game;
         WheelUI.prototype.stop = function () {
             this.twAction.setPaused(true);
             this.twAction.pause();
+        };
+        WheelUI.prototype.resume = function () {
+            // this.twAction.setPaused(false);
+            // egret.Tween.resumeTweens(this);
+            this.twAction.setPaused(false);
+            this.twAction.play();
         };
         WheelUI.prototype.insertPos = function () {
             return this.y + this.$maxRadius;
@@ -111,7 +117,6 @@ var game;
             for (var _b = 0, _c = this.lines; _b < _c.length; _b++) {
                 var v = _c[_b];
                 this.removeChild(v);
-                game.ObjectPool.getPool("egret.Shape").returnObject(v);
             }
             this.needles = [];
             this.lines = [];

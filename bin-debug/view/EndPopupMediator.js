@@ -29,7 +29,7 @@ var game;
             var mediator = game.ApplicationFacade.getInstance().retrieveMediator(game.AppContainerMediator.NAME);
             var appContainerMediator = mediator;
             // appContainerMediator.appContainer.removeChild(this.endPopup);
-            this.sendNotification(game.GameCommand.START_GAME);
+            this.sendNotification(game.GameCommand.RESTART_GAME);
             this.endPopup.visible = false;
         };
         EndPopupMediator.prototype.shareBtnClick = function (event) {

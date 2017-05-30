@@ -28,7 +28,7 @@ module game{
             let mediator: puremvc.IMediator = ApplicationFacade.getInstance().retrieveMediator(game.AppContainerMediator.NAME);
             let appContainerMediator = <game.AppContainerMediator><any> mediator;
             // appContainerMediator.appContainer.removeChild(this.endPopup);
-            this.sendNotification(GameCommand.START_GAME);
+            this.sendNotification(GameCommand.RESTART_GAME);
             this.endPopup.visible = false
         }
 

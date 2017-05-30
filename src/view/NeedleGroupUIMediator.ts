@@ -10,7 +10,8 @@ module game{
 
         listNotificationInterests():string[]{
             return [
-            //    GameProxy.GAME_START
+               GameProxy.GAME_START,
+               GameProxy.GAME_RESTART
             ]
         }
 
@@ -21,10 +22,13 @@ module game{
             switch(notification.getName()){
 
                 case GameProxy.GAME_START:
-                        this.needleGroupUI.clearObjects();
                         this.needleGroupUI.initViewByLevel(<number><any>data);
                     break
-
+                case GameProxy.GAME_RESTART:
+                        this.needleGroupUI.clearObjects();
+                        this.needleGroupUI.y = this.needleGroupUI.parent.$stage.$stageHeight;
+                        this.needleGroupUI.initViewByLevel(<number><any>data);
+                    break
             }
         }
 

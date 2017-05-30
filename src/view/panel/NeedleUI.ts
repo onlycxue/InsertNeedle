@@ -34,14 +34,18 @@ module game{
 
              this.numLabel = new egret.TextField();
              this.numLabel.text = this.text
+             this.addChild(this.numLabel);
+             //txt str 为 “” 时长度为0
              this.numLabel.x = -this.numLabel.width/2;
              this.numLabel.y = -this.numLabel.height/2;
-             this.addChild(this.numLabel);
+             
         }
 
         public setText(text:string){
             this.text = text;
             this.numLabel.text = text;
+            this.numLabel.x = -this.numLabel.width/2;
+            this.numLabel.y = -this.numLabel.height/2;
         }
         
     }

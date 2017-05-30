@@ -17,7 +17,7 @@ module game{
             ApplicationFacade.getInstance().registerCommand(GameCommand.START_GAME,GameCommand);
             ApplicationFacade.getInstance().registerCommand(GameCommand.OVER_GAME,GameCommand);
             ApplicationFacade.getInstance().registerCommand(GameCommand.WIN_GAME,GameCommand);
-            // ApplicationFacade.getInstance().registerCommand(GameCommand.RESTART_GAME,GameCommand);
+            ApplicationFacade.getInstance().registerCommand(GameCommand.RESTART_GAME,GameCommand);
         }
         public execute(notification:puremvc.INotification):void{
 
@@ -25,9 +25,7 @@ module game{
 
             switch(notification.getName()){
                 case GameCommand.START_GAME: {
-                    
                     gameProxy.startGame();
-
                     break;
                 }
                 case GameCommand.OVER_GAME: {
@@ -36,6 +34,11 @@ module game{
                 }
                 case GameCommand.WIN_GAME:{
                     gameProxy.setResult(true);
+                    break;
+                }
+                case GameCommand.RESTART_GAME:{
+                
+                    gameProxy.restartGame();
                     break;
                 }
             }

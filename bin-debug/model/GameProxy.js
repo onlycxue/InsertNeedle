@@ -18,11 +18,15 @@ var game;
             this.sendNotification(GameProxy.GAME_START, game.CommonData.level);
             game.CommonData.isRunning = true;
         };
+        GameProxy.prototype.restartGame = function () {
+            this.sendNotification(GameProxy.GAME_RESTART, game.CommonData.level);
+        };
         GameProxy.prototype.setResult = function (b) {
             if (b) {
                 game.CommonData.level = game.CommonData.level + 1;
             }
             else {
+                game.CommonData.level = 0;
             }
             game.CommonData.isRunning = false;
         };
@@ -30,6 +34,7 @@ var game;
     }(puremvc.Proxy));
     GameProxy.NAME = "GameProxy";
     GameProxy.GAME_START = "game_start";
+    GameProxy.GAME_RESTART = "game_restart";
     game.GameProxy = GameProxy;
     __reflect(GameProxy.prototype, "game.GameProxy", ["puremvc.IProxy", "puremvc.INotifier"]);
 })(game || (game = {}));

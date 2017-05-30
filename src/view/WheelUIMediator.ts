@@ -10,7 +10,8 @@ module game{
 
        listNotificationInterests():string[]{
             return [
-                // GameProxy.GAME_START,
+                GameProxy.GAME_START,
+                GameProxy.GAME_RESTART
             ]
         }
 
@@ -20,6 +21,9 @@ module game{
 
             switch(notification.getName()){
                 case GameProxy.GAME_START:
+                    this.wheelUI.initViewByLevel(<number><any>data);
+                break;
+                case GameProxy.GAME_RESTART:
                     this.wheelUI.clearObjects();
                     this.wheelUI.initViewByLevel(<number><any>data);
                 break;

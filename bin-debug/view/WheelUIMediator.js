@@ -14,12 +14,18 @@ var game;
             return _super.call(this, WheelUIMediator.NAME, view) || this;
         }
         WheelUIMediator.prototype.listNotificationInterests = function () {
-            return [];
+            return [
+                game.GameProxy.GAME_START,
+                game.GameProxy.GAME_RESTART
+            ];
         };
         WheelUIMediator.prototype.handleNotification = function (notification) {
             var data = notification.getBody();
             switch (notification.getName()) {
                 case game.GameProxy.GAME_START:
+                    this.wheelUI.initViewByLevel(data);
+                    break;
+                case game.GameProxy.GAME_RESTART:
                     this.wheelUI.clearObjects();
                     this.wheelUI.initViewByLevel(data);
                     break;

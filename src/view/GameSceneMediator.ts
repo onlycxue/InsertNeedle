@@ -41,6 +41,7 @@ module game{
         public listNotificationInterests():Array<any>{
             return [
                 GameProxy.GAME_START,
+                GameProxy.GAME_RESTART,
             ];
         }
 
@@ -50,20 +51,16 @@ module game{
             switch(notification.getName()){
 
                 case GameProxy.GAME_START:{
-                    this.gameScene.redShap.visible = false
 
-                    // this.wheelUI.clearObjects();
-                    // this.wheelUI.initViewByLevel(<number><any>data);
-                    this.gameScene.wheel.clearObjects();
-                    this.gameScene.wheel.initViewByLevel(<number><any>data);
+                    break;
+                }
+                case GameProxy.GAME_RESTART:{
 
+                    this.gameScene.wheel.resume();
+                    // this.gameScene.wheel.play(4000,false); 
 
-                    // this.needleGroupUI.clearObjects();
-                    // this.needleGroupUI.initViewByLevel(<number><any>data);
-
-                    this.gameScene.needleGroup.clearObjects();
-                    this.gameScene.needleGroup.initViewByLevel(<number><any>data);
-
+                    this.gameScene.redShap.visible = false;
+                    
                     break;
                 }
 
