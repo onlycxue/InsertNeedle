@@ -12,6 +12,7 @@ module game {
         }  
         private gameScene: game.GameScene;
         private endPopup:game.EndPopup;
+        private winPopup:game.WinPopup;
         public showGameScene():void{
             if (this.gameScene instanceof game.GameScene){
                 console.log(">>>>>>> 已经创建 >>>>>>>")
@@ -42,8 +43,16 @@ module game {
         }
 
         public showWinPopup():void {
-            let winPopup = new game.WinPopup();
-            this.addChild(winPopup);
+            // let winPopup = new game.WinPopup();
+            // this.addChild(winPopup);
+
+            if(this.winPopup instanceof game.WinPopup){
+                this.winPopup.visible = true;
+            }
+            else{
+                this.winPopup = new game.WinPopup();
+                this.addChild(this.winPopup);
+            }
         }
         
     }

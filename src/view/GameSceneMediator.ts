@@ -22,21 +22,27 @@ module game{
             let nPoint = this.gameScene.localToGlobal(needle.x,needle.y);
             //判断是否发生碰撞
             for (let item of this.gameScene.wheel.needleList){
-
-
                 let iPoint = this.gameScene.wheel.localToGlobal(item.x,item.y);
-
                 if (egret.Point.distance(nPoint,iPoint) <= 60 ){
                     this.gameScene.wheel.stop();
                     this.gameScene.redShap.visible = true;
                     this.gameScene.wheel.insertElement(needle);
 
                     this.sendNotification(SceneCommand.SHOW_END);
+                    this.sendNotification(GameCommand.OVER_GAME);
                     return;
                 }
             }
             this.gameScene.wheel.insertElement(needle);
             this.gameScene.needleGroup.move();
+            //判断needleGroup里元素的数量
+
+            if(this.gameScene.needleGroup.numChildren <= 0){
+                // console.log(">>>>> 任务完成 >>>>>>")
+                this.gameScene.wheel.stop();
+                this.sendNotification(SceneCommand.SHOW_WIN);
+                this.sendNotification(GameCommand.WIN_GAME);
+            }
         }
         public listNotificationInterests():Array<any>{
             return [

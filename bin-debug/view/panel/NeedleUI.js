@@ -41,10 +41,7 @@ var game;
             this.numLabel = new egret.TextField();
             this.numLabel.text = this.text;
             this.addChild(this.numLabel);
-            //  this.numLabel.x = -10;
-            //  this.numLabel.y = -10;
-            //  console.log(this.numLabel.width);
-            //  console.log(this.numLabel.height);
+            //txt str 为 “” 时长度为0
             this.numLabel.x = -this.numLabel.width / 2;
             this.numLabel.y = -this.numLabel.height / 2;
         };

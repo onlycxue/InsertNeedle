@@ -22,7 +22,10 @@ var game;
         WinPopupMediator.prototype.handleNotification = function (notification) {
         };
         WinPopupMediator.prototype.nextBtnClick = function (event) {
-            console.log(">>>>> nextBtn >>>>>> clicked");
+            // console.log(">>>>> nextBtn >>>>>> clicked");
+            //这两句颠倒有问题。
+            this.sendNotification(game.GameCommand.RESTART_GAME);
+            this.winPopup.visible = false;
         };
         WinPopupMediator.prototype.shareBtnClick = function (event) {
             console.log(">>>>> shareBtn >>>>>> clicked");

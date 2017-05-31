@@ -44,8 +44,15 @@ var game;
             }
         };
         AppContainer.prototype.showWinPopup = function () {
-            var winPopup = new game.WinPopup();
-            this.addChild(winPopup);
+            // let winPopup = new game.WinPopup();
+            // this.addChild(winPopup);
+            if (this.winPopup instanceof game.WinPopup) {
+                this.winPopup.visible = true;
+            }
+            else {
+                this.winPopup = new game.WinPopup();
+                this.addChild(this.winPopup);
+            }
         };
         return AppContainer;
     }(eui.UILayer));

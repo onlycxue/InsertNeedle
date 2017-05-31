@@ -20,7 +20,11 @@ module game{
         }
 
         public nextBtnClick(event: egret.TouchEvent){
-            console.log(">>>>> nextBtn >>>>>> clicked");
+            // console.log(">>>>> nextBtn >>>>>> clicked");
+            
+            //这两句颠倒有问题。
+            this.sendNotification(GameCommand.RESTART_GAME);
+            this.winPopup.visible = false;
 
         }
 

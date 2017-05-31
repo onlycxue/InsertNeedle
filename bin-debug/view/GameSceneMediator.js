@@ -32,11 +32,19 @@ var game;
                     this.gameScene.redShap.visible = true;
                     this.gameScene.wheel.insertElement(needle);
                     this.sendNotification(game.SceneCommand.SHOW_END);
+                    this.sendNotification(game.GameCommand.OVER_GAME);
                     return;
                 }
             }
             this.gameScene.wheel.insertElement(needle);
             this.gameScene.needleGroup.move();
+            //判断needleGroup里元素的数量
+            if (this.gameScene.needleGroup.numChildren <= 0) {
+                // console.log(">>>>> 任务完成 >>>>>>")
+                this.gameScene.wheel.stop();
+                this.sendNotification(game.SceneCommand.SHOW_WIN);
+                this.sendNotification(game.GameCommand.WIN_GAME);
+            }
         };
         GameSceneMediator.prototype.listNotificationInterests = function () {
             return [
