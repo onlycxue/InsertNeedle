@@ -13,6 +13,9 @@ module game{
         //触摸事件响应
         public touchEventHandle(event:egret.TouchEvent){
 
+           if (this.gameScene.needleGroup.numChildren <= 0){
+               return
+           }
             this.gameScene.shotNeedle(this.checkCollision.bind(this));
 
         }

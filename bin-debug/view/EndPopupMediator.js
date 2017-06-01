@@ -26,8 +26,8 @@ var game;
         };
         EndPopupMediator.prototype.restartBtnClick = function (event) {
             console.log(">>>>> restartBtn >>>>>> clicked");
-            var mediator = game.ApplicationFacade.getInstance().retrieveMediator(game.AppContainerMediator.NAME);
-            var appContainerMediator = mediator;
+            // let mediator: puremvc.IMediator = ApplicationFacade.getInstance().retrieveMediator(game.AppContainerMediator.NAME);
+            // let appContainerMediator = <game.AppContainerMediator><any> mediator;
             // appContainerMediator.appContainer.removeChild(this.endPopup);
             this.sendNotification(game.GameCommand.RESTART_GAME);
             this.endPopup.visible = false;

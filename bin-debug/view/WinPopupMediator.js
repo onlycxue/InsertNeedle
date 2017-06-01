@@ -11,7 +11,7 @@ var game;
     var WinPopupMediator = (function (_super) {
         __extends(WinPopupMediator, _super);
         function WinPopupMediator(viewComponent) {
-            var _this = _super.call(this, game.EndPopupMediator.NAME, viewComponent) || this;
+            var _this = _super.call(this, WinPopupMediator.NAME, viewComponent) || this;
             _this.winPopup.nextBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, _this.nextBtnClick, _this);
             _this.winPopup.shareBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, _this.shareBtnClick, _this);
             return _this;

@@ -17,6 +17,9 @@ var game;
         }
         //触摸事件响应
         GameSceneMediator.prototype.touchEventHandle = function (event) {
+            if (this.gameScene.needleGroup.numChildren <= 0) {
+                return;
+            }
             this.gameScene.shotNeedle(this.checkCollision.bind(this));
         };
         //检测合法性

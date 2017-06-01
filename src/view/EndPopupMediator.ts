@@ -25,8 +25,8 @@ module game{
 
         public restartBtnClick(event: egret.TouchEvent){
             console.log(">>>>> restartBtn >>>>>> clicked");
-            let mediator: puremvc.IMediator = ApplicationFacade.getInstance().retrieveMediator(game.AppContainerMediator.NAME);
-            let appContainerMediator = <game.AppContainerMediator><any> mediator;
+            // let mediator: puremvc.IMediator = ApplicationFacade.getInstance().retrieveMediator(game.AppContainerMediator.NAME);
+            // let appContainerMediator = <game.AppContainerMediator><any> mediator;
             // appContainerMediator.appContainer.removeChild(this.endPopup);
             this.sendNotification(GameCommand.RESTART_GAME);
             this.endPopup.visible = false

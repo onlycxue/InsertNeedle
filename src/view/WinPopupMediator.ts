@@ -5,7 +5,7 @@ module game{
         public static NAME:string = "WinPopupMediator";
 
         constructor(viewComponent:any){
-            super(EndPopupMediator.NAME,viewComponent);
+            super(WinPopupMediator.NAME,viewComponent);
             this.winPopup.nextBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.nextBtnClick,this);
             this.winPopup.shareBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.shareBtnClick,this);
         }
