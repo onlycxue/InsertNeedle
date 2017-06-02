@@ -19,6 +19,7 @@ module game{
         public restartGame(){
             
             this.sendNotification(GameProxy.GAME_RESTART,game.CommonData.level);
+            game.CommonData.isRunning = true
         }
         public setResult(b:boolean):void{
 

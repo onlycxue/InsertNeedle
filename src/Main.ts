@@ -10,7 +10,7 @@ class Main extends eui.UILayer {
         RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE,this.onConfigComplete,this);
         RES.loadConfig("resource/default.res.json","resource/");
 
-
+        this.$stage.scaleMode = egret.StageScaleMode.NO_BORDER;
         new eui.Theme("resource/default.thm.json",this.stage);
     }
     

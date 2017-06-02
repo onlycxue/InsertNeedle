@@ -20,6 +20,10 @@ var game;
             if (this.gameScene.needleGroup.numChildren <= 0) {
                 return;
             }
+            if (game.CommonData.isRunning == false) {
+                console.log(">>>>>> game is isRunning is false");
+                return;
+            }
             this.gameScene.shotNeedle(this.checkCollision.bind(this));
         };
         //检测合法性

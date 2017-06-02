@@ -20,6 +20,7 @@ var game;
         };
         GameProxy.prototype.restartGame = function () {
             this.sendNotification(GameProxy.GAME_RESTART, game.CommonData.level);
+            game.CommonData.isRunning = true;
         };
         GameProxy.prototype.setResult = function (b) {
             if (b) {
